@@ -1,0 +1,33 @@
+{
+    "mode": "Indexed",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "tags['Environment']]",
+            "exists": "false"
+          },
+          {
+            "value": "[subscription().tags['Environment']]",
+            "notEquals": ""
+          }
+        ]
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "operations": [
+            {
+              "operation": "addOrReplace",
+              "field": "tags['Environment']",
+              "value": "[subscription().tags['Environment']]"
+            }
+          ]
+        }
+      }
+    },
+    "parameters": {}
+  }
