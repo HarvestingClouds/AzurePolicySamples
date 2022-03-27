@@ -1,0 +1,19 @@
+{
+    "mode": "Indexed",
+    "policyRule": {
+      "if": {
+        "not": {
+          "field": "location",
+          "in": [
+            "eastus2",
+            "centralus",
+            "global"
+          ]
+        }
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {}
+  }
