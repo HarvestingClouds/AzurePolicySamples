@@ -1,0 +1,46 @@
+{
+    "mode": "Indexed",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "value": "[resourceGroup().tags['ApplicationOwner']]",
+            "exists": "true"
+          },
+          {
+            "value": "[resourceGroup().tags['ApplicationOwner']]",
+            "notEquals": ""
+          },
+          {
+            "value": "[resourceGroup().tags['DepartmentName']]",
+            "exists": "true"
+          },
+          {
+            "value": "[resourceGroup().tags['DepartmentName']]",
+            "notEquals": ""
+          }
+        ]
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "operations": [
+            {
+              "operation": "addOrReplace",
+              "field": "tags['ApplicationOwner']",
+              "value": "[resourceGroup().tags['ApplicationOwner']]"
+            },
+            {
+              "operation": "addOrReplace",
+              "field": "tags['DepartmentName']",
+              "value": "[resourceGroup().tags['DepartmentName']]"
+            }
+          ]
+        }
+      }
+    },
+    "parameters": {}
+  }

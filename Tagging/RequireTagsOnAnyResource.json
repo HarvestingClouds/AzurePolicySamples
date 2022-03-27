@@ -1,0 +1,25 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+            "anyOf": [
+              {
+                "field": "tags['ApplicationOwner']",
+                "exists": "false"
+              },
+              {
+                "field": "tags['CapitalProject']",
+                "exists": "false"
+              },
+              {
+                "field": "tags['CapitalProjectName']",
+                "exists": "false"
+              }
+            ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {}
+  }

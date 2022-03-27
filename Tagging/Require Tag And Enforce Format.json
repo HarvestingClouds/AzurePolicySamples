@@ -1,0 +1,23 @@
+{
+    "mode": "Indexed",
+    "policyRule": {
+      "if": {
+        "not": {
+          "allOf": [
+            {
+              "field": "tags['ApplicationOwner']",
+              "exists": "true"
+            },
+            {
+              "field": "tags['ApplicationOwner']",
+              "like": "*@harvestingclouds.com"
+            }
+          ]
+        }
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {}
+  }

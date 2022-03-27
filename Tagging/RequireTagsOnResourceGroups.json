@@ -1,0 +1,29 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+          {
+            "anyOf": [
+              {
+                "field": "tags['ApplicationOwner']",
+                "exists": "false"
+              },
+              {
+                "field": "tags['DepartmentName']",
+                "exists": "false"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {}
+  }
