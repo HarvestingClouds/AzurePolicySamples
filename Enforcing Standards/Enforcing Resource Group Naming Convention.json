@@ -1,0 +1,53 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+          {
+            "anyOf": [
+              {
+                "field": "name",
+                "notLike": "RG-*"
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "name",
+                    "notLike": "*-DEV-USE"
+                  },
+                  {
+                    "field": "name",
+                    "notLike": "*-DEV-USW"
+                  },
+                  {
+                    "field": "name",
+                    "notLike": "*-TEST-USE"
+                  },
+                  {
+                    "field": "name",
+                    "notLike": "*-TEST-USW"
+                  },
+                  {
+                    "field": "name",
+                    "notLike": "*-PROD-USE"
+                  },
+                  {
+                    "field": "name",
+                    "notLike": "*-PROD-USW"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {}
+  }
