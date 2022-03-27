@@ -1,0 +1,41 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions"
+          },
+          {
+            "anyOf": [
+              {
+                "field": "tags['Environment']",
+                "exists": "false"
+              },
+              {
+                "field": "tags['Environment']",
+                "notEquals": "Dev"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/4a9ae827-6dc8-4573-8ac7-8239d42aa03f"
+          ],
+          "operations": [
+            {
+              "operation": "addOrReplace",
+              "field": "tags['Environment']",
+              "value": "Dev"
+            }
+          ]
+        }
+      }
+    },
+    "parameters": {}
+  }
