@@ -1,0 +1,33 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "anyOf": [
+          {
+            "field": "tags['UpdateDate']",
+            "exists": "false"
+          },
+          {
+            "field": "tags['UpdateDate']",
+            "exists": "true"
+          }
+        ]
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "operations": [
+            {
+              "operation": "addOrReplace",
+              "field": "tags['UpdateDate']",
+              "value": "[concat(substring(utcNow(),5,2),'/', substring(utcNow(),8,2),'/',substring(utcNow(),0,4),' ',substring(utcNow(),11,2),':',substring(utcNow(),14,2))]"
+            }
+          ]
+        }
+      }
+    },
+    "parameters": {}
+  }
