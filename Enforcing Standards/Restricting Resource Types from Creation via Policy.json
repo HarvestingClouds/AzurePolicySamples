@@ -1,0 +1,57 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "anyOf": [
+          {
+            "field": "type",
+            "like": "Microsoft.Network/dnszones*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.Network/networkWatchers*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.Search/searchServices*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.Network/publicIPAddresses*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.Compute/availabilitySets*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.Network/bastionHosts*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.Sql/servers/elasticpools*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.Network/routeTables*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.ClassicCompute/*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.ClassicStorage/*"
+          },
+          {
+            "field": "type",
+            "like": "Microsoft.ContainerInstance/*"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {}
+  }
