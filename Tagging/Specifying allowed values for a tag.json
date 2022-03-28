@@ -1,0 +1,19 @@
+{
+    "mode": "Indexed",
+    "policyRule": {
+      "if": {
+        "not": {
+            "field": "tags['Environment']",
+          "in": [
+            "dev",
+            "test",
+            "prod"
+          ]
+        }
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {}
+  }
